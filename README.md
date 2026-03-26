@@ -81,7 +81,3 @@ Maps each character in `input` through a lookup object, passing through unmapped
 ```js
 getCollection('abc', { a: 1, b: 2, c: 3 }); // [1, 2, 3]
 ```
-
-## License
-
-ISC
