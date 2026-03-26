@@ -14,7 +14,7 @@ const tone = new Tone();
 // From digits
 const wav = await tone.create([1, 2, 3]);
 
-// From text — letters are mapped to keypad digits per E.161
+// From text - letters are mapped to keypad digits per E.161
 const wav = await tone.create('hello');
 
 // Play it
@@ -24,19 +24,7 @@ audio.play();
 
 `create` accepts a string or array of characters. Letters are converted to their corresponding phone keypad digit (`h→4`, `e→3`, `l→5`, `o→6`), digits and `*`, `#`, ` ` are used as-is, and unrecognized characters are silently dropped.
 
-**Returns** an audio `Blob` (via a transpiler function you wire up — see [Integration](#integration) below).
-
-## Frequency table
-
-Each key produces two simultaneous sinusoidal tones — one from the row frequency, one from the column:
-
-```
-             1209 Hz    1336 Hz    1477 Hz
-  697 Hz     1          2 ABC      3 DEF
-  770 Hz     4 GHI      5 JKL      6 MNO
-  852 Hz     7 PQRS     8 TUV      9 WXYZ
-  941 Hz     *          0          #
-```
+**Returns** an audio `Blob` (via a transpiler function you wire up - see [Integration](#integration) below).
 
 ## Timing
 
@@ -44,7 +32,7 @@ Each tone uses an `80ms` mark (sound) followed by an `80ms` space (silence), giv
 
 ## Integration
 
-The `create` method renders tones into a `Float32Array` via `OfflineAudioContext` and calls a `transpiler` function to convert the raw PCM samples into a WAV `Blob`. You'll need to provide that function — for example, using [ArraybufferToWav](https://github.com/bmson/ArraybufferToWav):
+The `create` method renders tones into a `Float32Array` via `OfflineAudioContext` and calls a `transpiler` function to convert the raw PCM samples into a WAV `Blob`. You'll need to provide that function - for example, using [ArraybufferToWav](https://github.com/bmson/ArraybufferToWav):
 
 ```js
 import arrayBufferToWav from '../ArraybufferToWav/lib.js';
