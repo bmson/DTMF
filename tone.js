@@ -137,7 +137,7 @@ export default class {
   }
 
   // Generate tone for each frequency
-  async create (input = [], transpiler) {
+  async create (input = []) {
 
     // Cleanup input and convert to iterable DTMF array
     const array = getCollection(input, this.#KEYPAD); // Convert input to keypad object values based on object keys
@@ -160,7 +160,7 @@ export default class {
     const channelData = audioBuffer.getChannelData(0);
 
     // Transpile channel data to wav format
-    return transpiler ? transpiler(channelData, sampleRate) : [channelData, sampleRate]
+    return [channelData, sampleRate]
   }
 
 }
